@@ -11,6 +11,15 @@ class AdaptiveLayout extends StatefulWidget {  //stateful to be able to change t
 }
 
 class _AdaptiveLayoutState extends State<AdaptiveLayout> {
+  
+  int selectedListId = 0;
+
+  void _onContactListSelected(int listId) {
+    setState(() {
+      selectedListId = listId;
+    });
+  }
+  
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
