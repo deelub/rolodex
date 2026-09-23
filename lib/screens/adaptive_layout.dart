@@ -19,7 +19,7 @@ class _AdaptiveLayoutState extends State<AdaptiveLayout> {
       selectedListId = listId;
     });
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
@@ -27,11 +27,18 @@ class _AdaptiveLayoutState extends State<AdaptiveLayout> {
         final isLargeScreen = constraints.maxWidth > largeScreenMinWidth;  //screen size detection
 
         if (isLargeScreen) {
-          return const Text('Large screen layout'); 
+          return _buildLargeScreenLayout();
         } else {
           return const ContactGroupsPage();
         }
       },
+    );
+  }
+
+   Widget _buildLargeScreenLayout() {
+    return const CupertinoPageScaffold(
+      backgroundColor: CupertinoColors.extraLightBackgroundGray,
+      child: SafeArea(child: Row(children: [Text('Sidebar'), Text('Details')])),
     );
   }
 }
