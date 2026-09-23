@@ -2,7 +2,7 @@ import 'dart:collection';
 
 import 'package:flutter/cupertino.dart';
 
-import 'contact.dart';
+import 'contacts.dart';
 
 class ContactGroup {
   factory ContactGroup({
@@ -56,8 +56,9 @@ class ContactGroup {
 
 typedef AlphabetizedContactMap = SplayTreeMap<String, List<Contact>>;
 
-/// Sortscontact list by last name, first name & potentially middle name.  Identical names -> contactID sorting
-
+/// Sorts a list of [contacts] alphabetically by
+/// last name, then first name, then middle name.
+/// If names are identical, sorts by contact ID to ensure consistent ordering.
 void _sortContacts(List<Contact> contacts) {
   contacts.sort((a, b) {
     final checkLastName = a.lastName.compareTo(b.lastName);
