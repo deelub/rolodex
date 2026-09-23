@@ -108,3 +108,15 @@ class ContactListSection extends StatelessWidget {
     );
   }
 }
+
+class ContactListDetail extends StatelessWidget {     //hide scroll deets for large screens
+  const ContactListDetail({super.key, required this.listId});
+
+  final int listId;
+
+  @override
+  Widget build(BuildContext context) {
+    return _ContactListView(listId: listId, automaticallyImplyLeading: false);
+  }
+}
+

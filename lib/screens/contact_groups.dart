@@ -91,3 +91,23 @@ class _ContactGroupsView extends StatelessWidget {
     );
   }
 }
+
+class ContactGroupsSidebar extends StatelessWidget { // contact grps on large screens
+  const ContactGroupsSidebar({
+    super.key,
+    required this.selectedListId,
+    required this.onListSelected,
+  });
+
+  final int selectedListId;
+  final void Function(int) onListSelected;
+
+  @override
+  Widget build(BuildContext context) {
+    return _ContactGroupsView(
+      selectedListId: selectedListId,
+      onListSelected: (list) => onListSelected(list.id),
+    );
+  }
+}
+
