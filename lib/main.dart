@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 
+import 'data/contact_group.dart';
+
+final contactGroupsModel = ContactGroupsModel();
 void main() {
   runApp(const RolodexApp());
 }
@@ -9,7 +12,8 @@ class RolodexApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CupertinoApp( //CuperrtinoApp as opposed to Mainapp for iOS styling
+    return const CupertinoApp(
+      //CuperrtinoApp as opposed to Mainapp for iOS styling
       title: 'Rolodex',
       theme: CupertinoThemeData(
         barBackgroundColor: CupertinoDynamicColor.withBrightness(
