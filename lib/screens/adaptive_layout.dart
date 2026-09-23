@@ -36,9 +36,11 @@ class _AdaptiveLayoutState extends State<AdaptiveLayout> {
   }
 
    Widget _buildLargeScreenLayout() {
-    return const CupertinoPageScaffold(
+    return CupertinoPageScaffold(
       backgroundColor: CupertinoColors.extraLightBackgroundGray,
-      child: SafeArea(child: Row(children: [Text('Sidebar'), Text('Details')])),
+      child: SafeArea(child: Row(children: [ const SizedBox(width: 320, child: Text('Sidebar placeholder')),
+          Container(width: 1, color: CupertinoColors.separator),
+          const Expanded(child: Text('Details placeholder')),])),
     );
   }
 }
