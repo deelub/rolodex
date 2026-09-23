@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
+import 'package:rolodex/screens/contacts.dart';
 
 import '../data/contact_group.dart';
 import '../data/contacts.dart';
-
 import '../main.dart';
 
 class ContactGroupsPage extends StatelessWidget {
@@ -12,10 +12,12 @@ class ContactGroupsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return _ContactGroupsView(
       //returning the widet will the silver
-      selectedListId: 0,
-      onListSelected: (list) {
-        debugPrint(list.toString());
-      },
+      onListSelected: (list) => Navigator.of(context).push(
+        CupertinoPageRoute<void>(
+          title: list.title,
+          builder: (context) => ContactListsPage(listId: list.id),
+        ),
+      ),
     );
   }
 }
