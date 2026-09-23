@@ -23,7 +23,7 @@ class _ContactListView extends StatelessWidget {
   final int listId;
   final bool automaticallyImplyLeading;
 
-  @override
+   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       child: ValueListenableBuilder<List<ContactGroup>>(
@@ -31,21 +31,28 @@ class _ContactListView extends StatelessWidget {
         builder: (context, contactGroups, child) {
           final contactList = contactGroupsModel.findContactList(listId);
 
+          final contacts = contactList.alphabetizedContacts;
+
           return CustomScrollView(
-            slivers: [
+            slivers: [  //for scrollable widgets
               CupertinoSliverNavigationBar.search(
                 largeTitle: Text(contactList.title),
+                automaticallyImplyLeading: automaticallyImplyLeading,
                 searchField: const CupertinoSearchTextField(
                   suffixIcon: Icon(CupertinoIcons.mic_fill),
                   suffixMode: OverlayVisibilityMode.always,
                 ),
               ),
-              SliverFillRemaining(
-                child: Center(
-                  child: Text(
-                    '${contactList.contacts.length} contacts in ${contactList.label}',
+              SliverList.list(
+                children: [
+                  const SizedBox(height: 20),
+                  ...contacts.keys.map(
+                    (initial) => ContactListSection(
+                      lastInitial: initial,
+                      contacts: contacts[initial]!,
+                    ),
                   ),
-                ),
+                ],
               ),
             ],
           );
