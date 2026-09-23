@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 
 import '../data/contact_group.dart';
+import '../data/contacts.dart';
+
 import '../main.dart';
 
 class ContactGroupsPage extends StatelessWidget {
