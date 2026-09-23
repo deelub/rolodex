@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:rolodex/main.dart';
-import '../data/contact_group.dart';
 
+import '../data/contact_group.dart';
 
 class ContactListsPage extends StatelessWidget {
   const ContactListsPage({super.key, required this.listId});
@@ -10,7 +10,7 @@ class ContactListsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     return _ContactListView(listId: listId);
+    return _ContactListView(listId: listId);
   }
 }
 
@@ -33,9 +33,12 @@ class _ContactListView extends StatelessWidget {
 
           return CustomScrollView(
             slivers: [
-              CupertinoSliverNavigationBar(
+              CupertinoSliverNavigationBar.search(
                 largeTitle: Text(contactList.title),
-                automaticallyImplyLeading: automaticallyImplyLeading,
+                searchField: const CupertinoSearchTextField(
+                  suffixIcon: Icon(CupertinoIcons.mic_fill),
+                  suffixMode: OverlayVisibilityMode.always,
+                ),
               ),
               SliverFillRemaining(
                 child: Center(
@@ -51,4 +54,3 @@ class _ContactListView extends StatelessWidget {
     );
   }
 }
-
